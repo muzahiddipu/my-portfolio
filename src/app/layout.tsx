@@ -1,27 +1,35 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Dipu | Junior Web Developer & Full-Stack Builder",
+  title: "Dipu | Web Developer Portfolio",
   description:
-    "Personal developer portfolio of Dipu — Junior Web Developer passionate about building purposeful, modern, and accessible web experiences with React, Next.js, and TypeScript.",
+    "Portfolio of Dipu — an aspiring junior web developer and BSc Mathematics student building modern, accessible, full-stack web experiences with React, Next.js, and TypeScript.",
   openGraph: {
-    title: "Dipu | Junior Web Developer",
+    title: "Dipu | Web Developer Portfolio",
     description:
-      "Building for the web, with purpose. Explore selected projects and web experiences built by Dipu.",
+      "Explore selected projects and web experiences built by Dipu — junior web developer focused on React, Next.js, TypeScript, and full-stack development.",
+    url: "https://my-portfolio-dipu-labs.vercel.app/",
+    siteName: "Dipu | Portfolio",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#101A35",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -30,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-[#C8F169] selection:text-[#101A35]">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
       </body>
     </html>

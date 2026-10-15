@@ -46,83 +46,57 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --color-midnight-bg: #101A35;
-  --color-midnight-surface: #172443;
-  --color-midnight-surface-hover: #1D2D54;
-  --color-midnight-lime: #C8F169;
-  --color-midnight-text: #F3F5FA;
-  --color-midnight-muted: #A7B3CC;
-  --color-midnight-border: #223561;
+  /* ── Midnight Signal palette ── define once, reference everywhere ── */
+  --color-midnight-bg:           #101A35;
+  --color-midnight-surface:      #172443;
+  --color-midnight-surface-2:    #15203D;
+  --color-midnight-surface-hover:#1D2D54;
+  --color-midnight-lime:         #C8F169;
+  --color-midnight-lime-hover:   #d4f582;
+  --color-midnight-text:         #F3F5FA;
+  --color-midnight-muted:        #A7B3CC;
+  --color-midnight-border:       #223561;
+  --color-midnight-destructive:  #FF5C5C;
 }
 
+/* ── Semantic tokens — all reference the palette tokens above ── */
 :root {
-  --background: #101A35;
-  --foreground: #F3F5FA;
-  --card: #172443;
-  --card-foreground: #F3F5FA;
-  --popover: #172443;
-  --popover-foreground: #F3F5FA;
-  --primary: #C8F169;
-  --primary-foreground: #101A35;
-  --secondary: #172443;
-  --secondary-foreground: #F3F5FA;
-  --muted: #15203D;
-  --muted-foreground: #A7B3CC;
-  --accent: #1D2D54;
-  --accent-foreground: #C8F169;
-  --destructive: #FF5C5C;
-  --border: #223561;
-  --input: #223561;
-  --ring: #C8F169;
-  --chart-1: #C8F169;
-  --chart-2: #38BDF8;
-  --chart-3: #818CF8;
-  --chart-4: #A7B3CC;
-  --chart-5: #172443;
-  --radius: 0.625rem;
-  --sidebar: #172443;
-  --sidebar-foreground: #F3F5FA;
-  --sidebar-primary: #C8F169;
-  --sidebar-primary-foreground: #101A35;
-  --sidebar-accent: #1D2D54;
-  --sidebar-accent-foreground: #C8F169;
-  --sidebar-border: #223561;
-  --sidebar-ring: #C8F169;
+  --background:              var(--color-midnight-bg);
+  --foreground:              var(--color-midnight-text);
+  --card:                    var(--color-midnight-surface);
+  --card-foreground:         var(--color-midnight-text);
+  --popover:                 var(--color-midnight-surface);
+  --popover-foreground:      var(--color-midnight-text);
+  --primary:                 var(--color-midnight-lime);
+  --primary-foreground:      var(--color-midnight-bg);
+  --secondary:               var(--color-midnight-surface);
+  --secondary-foreground:    var(--color-midnight-text);
+  --muted:                   var(--color-midnight-surface-2);
+  --muted-foreground:        var(--color-midnight-muted);
+  --accent:                  var(--color-midnight-surface-hover);
+  --accent-foreground:       var(--color-midnight-lime);
+  --destructive:             var(--color-midnight-destructive);
+  --border:                  var(--color-midnight-border);
+  --input:                   var(--color-midnight-border);
+  --ring:                    var(--color-midnight-lime);
+  --chart-1:                 var(--color-midnight-lime);
+  --chart-2:                 #38BDF8;
+  --chart-3:                 #818CF8;
+  --chart-4:                 var(--color-midnight-muted);
+  --chart-5:                 var(--color-midnight-surface);
+  --radius:                  0.625rem;
+  --sidebar:                 var(--color-midnight-surface);
+  --sidebar-foreground:      var(--color-midnight-text);
+  --sidebar-primary:         var(--color-midnight-lime);
+  --sidebar-primary-foreground: var(--color-midnight-bg);
+  --sidebar-accent:          var(--color-midnight-surface-hover);
+  --sidebar-accent-foreground: var(--color-midnight-lime);
+  --sidebar-border:          var(--color-midnight-border);
+  --sidebar-ring:            var(--color-midnight-lime);
 }
 
-.dark {
-  --background: #101A35;
-  --foreground: #F3F5FA;
-  --card: #172443;
-  --card-foreground: #F3F5FA;
-  --popover: #172443;
-  --popover-foreground: #F3F5FA;
-  --primary: #C8F169;
-  --primary-foreground: #101A35;
-  --secondary: #172443;
-  --secondary-foreground: #F3F5FA;
-  --muted: #15203D;
-  --muted-foreground: #A7B3CC;
-  --accent: #1D2D54;
-  --accent-foreground: #C8F169;
-  --destructive: #FF5C5C;
-  --border: #223561;
-  --input: #223561;
-  --ring: #C8F169;
-  --chart-1: #C8F169;
-  --chart-2: #38BDF8;
-  --chart-3: #818CF8;
-  --chart-4: #A7B3CC;
-  --chart-5: #172443;
-  --sidebar: #172443;
-  --sidebar-foreground: #F3F5FA;
-  --sidebar-primary: #C8F169;
-  --sidebar-primary-foreground: #101A35;
-  --sidebar-accent: #1D2D54;
-  --sidebar-accent-foreground: #C8F169;
-  --sidebar-border: #223561;
-  --sidebar-ring: #C8F169;
-}
+/* .dark block removed — html always has class="dark" so :root already
+   covers the dark theme. All colours are inherited from palette tokens. */
 
 @layer base {
   * {
@@ -133,5 +107,50 @@
   }
   html {
     @apply font-sans scroll-smooth;
+  }
+  /* Selection uses palette tokens via CSS vars */
+  ::selection {
+    background-color: var(--color-midnight-lime);
+    color: var(--color-midnight-bg);
+  }
+  /* Give every anchor target enough top clearance for the sticky navbar (64px) */
+  :target,
+  [id] {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* ── Respect prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Project card hover / focus styles ── */
+@layer components {
+  .project-card:hover,
+  .project-card:focus-within {
+    border-color: color-mix(in srgb, var(--color-midnight-lime) 40%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .project-demo-link:hover {
+    background-color: var(--color-midnight-lime);
+    border-color: var(--color-midnight-lime);
+    color: var(--color-midnight-bg);
+  }
+
+  .project-demo-link:focus-visible {
+    background-color: var(--color-midnight-surface-hover);
+    border-color: var(--color-midnight-lime);
+    outline: 2px solid var(--color-midnight-lime);
+    outline-offset: 2px;
   }
 }
