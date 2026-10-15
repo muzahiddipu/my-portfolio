@@ -1,4 +1,5 @@
 import { Code2, Wrench, Compass } from "lucide-react";
+import { FadeIn } from "./fade-in";
 
 /* ─────────────────────────────────────────────
    Skill data — exactly what the spec lists,
@@ -59,41 +60,45 @@ export function SkillsSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}
-        <div className="flex flex-col items-start">
-          <span
-            className="inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
-            style={{
-              borderColor: "var(--color-midnight-border)",
-              backgroundColor: "var(--color-midnight-surface)",
-              color: "var(--color-midnight-lime)",
-            }}
-          >
-            Skills
-          </span>
+        <FadeIn className="flex flex-col items-start" delay={0.08}>
+          <div className="flex flex-col items-start">
+            <span
+              className="inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
+              style={{
+                borderColor: "var(--color-midnight-border)",
+                backgroundColor: "var(--color-midnight-surface)",
+                color: "var(--color-midnight-lime)",
+              }}
+            >
+              Skills
+            </span>
 
-          <h2
-            id="skills-heading"
-            className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
-            style={{ color: "var(--color-midnight-text)" }}
-          >
-            What I work with
-          </h2>
+            <h2
+              id="skills-heading"
+              className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+              style={{ color: "var(--color-midnight-text)" }}
+            >
+              What I work with
+            </h2>
 
-          <p
-            className="mt-3 max-w-[56ch] text-base"
-            style={{ color: "var(--color-midnight-muted)" }}
-          >
-            No ratings or percentages — just an honest list of what I use,
-            grouped by category.
-          </p>
-        </div>
+            <p
+              className="mt-3 max-w-[56ch] text-base"
+              style={{ color: "var(--color-midnight-muted)" }}
+            >
+              No ratings or percentages — just an honest list of what I use,
+              grouped by category.
+            </p>
+          </div>
+        </FadeIn>
 
         {/* ── Groups ── */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SKILL_GROUPS.map((group) => (
-            <SkillGroupCard key={group.id} group={group} />
-          ))}
-        </div>
+        <FadeIn className="mt-12" delay={0.12}>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SKILL_GROUPS.map((group) => (
+              <SkillGroupCard key={group.id} group={group} />
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

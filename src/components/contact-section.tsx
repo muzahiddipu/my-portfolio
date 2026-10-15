@@ -1,5 +1,6 @@
 import { CONTACT_EMAIL } from "@/lib/contact";
 import { EmailButton } from "./email-button";
+import { FadeIn } from "./fade-in";
 
 /* ─────────────────────────────────────────────
    ContactSection — server component.
@@ -15,92 +16,94 @@ export function ContactSection() {
       style={{ borderColor: "var(--color-midnight-border)" }}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div
-          className="relative overflow-hidden rounded-2xl border p-8 sm:p-12 lg:p-16"
-          style={{
-            borderColor: "var(--color-midnight-border)",
-            backgroundColor: "var(--color-midnight-surface)",
-          }}
-        >
-          {/* Subtle tonal wash — not a neon glow */}
+        <FadeIn delay={0.12}>
           <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full blur-3xl"
+            className="relative overflow-hidden rounded-2xl border p-8 sm:p-12 lg:p-16"
             style={{
-              background:
-                "radial-gradient(circle, color-mix(in srgb, var(--color-midnight-lime) 6%, transparent), transparent 70%)",
+              borderColor: "var(--color-midnight-border)",
+              backgroundColor: "var(--color-midnight-surface)",
             }}
-          />
-
-          <div className="relative z-10 max-w-2xl">
-            {/* Label */}
-            <span
-              className="inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
+          >
+            {/* Subtle tonal wash — not a neon glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full blur-3xl"
               style={{
-                borderColor: "var(--color-midnight-border)",
-                backgroundColor: "var(--color-midnight-bg)",
-                color: "var(--color-midnight-lime)",
+                background:
+                  "radial-gradient(circle, color-mix(in srgb, var(--color-midnight-lime) 6%, transparent), transparent 70%)",
               }}
-            >
-              Contact
-            </span>
+            />
 
-            {/* Heading */}
-            <h2
-              id="contact-heading"
-              className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
-              style={{ color: "var(--color-midnight-text)" }}
-            >
-              Have an opportunity or project in mind?
-            </h2>
-
-            {/* Honest copy — junior dev, no fake claims */}
-            <p
-              className="mt-5 max-w-[54ch] text-base leading-relaxed"
-              style={{ color: "var(--color-midnight-muted)" }}
-            >
-              I&apos;m actively looking for my first junior role — internship
-              or full-time — where I can write real code, receive real
-              feedback, and keep improving. If you&apos;re hiring, or want to
-              talk about a project, I&apos;d genuinely like to hear from you.
-            </p>
-
-            <p
-              className="mt-3 max-w-[54ch] text-sm leading-relaxed"
-              style={{ color: "var(--color-midnight-muted)" }}
-            >
-              GitHub is the best place to see how I work. Browse the repos,
-              open an issue, or just follow along.
-            </p>
-
-            {/* CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-
-              {/* Primary — GitHub (always visible) */}
-              <a
-                href="https://github.com/muzahiddipu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 rounded-lg px-6 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+            <div className="relative z-10 max-w-2xl">
+              {/* Label */}
+              <span
+                className="inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
                 style={{
-                  backgroundColor: "var(--color-midnight-lime)",
-                  color: "var(--color-midnight-bg)",
-                  ["--tw-ring-color" as string]: "var(--color-midnight-lime)",
-                  ["--tw-ring-offset-color" as string]: "var(--color-midnight-bg)",
+                  borderColor: "var(--color-midnight-border)",
+                  backgroundColor: "var(--color-midnight-bg)",
+                  color: "var(--color-midnight-lime)",
                 }}
-                aria-label="GitHub profile (muzahiddipu) — opens in new tab"
               >
-                <GitHubIcon className="h-4 w-4 shrink-0" />
-                <span>View GitHub Profile</span>
-              </a>
+                Contact
+              </span>
 
-              {/* Email — only when CONTACT_EMAIL is set */}
-              {CONTACT_EMAIL.trim() !== "" && (
-                <EmailButton email={CONTACT_EMAIL} />
-              )}
+              {/* Heading */}
+              <h2
+                id="contact-heading"
+                className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+                style={{ color: "var(--color-midnight-text)" }}
+              >
+                Have an opportunity or project in mind?
+              </h2>
+
+              {/* Honest copy — junior dev, no fake claims */}
+              <p
+                className="mt-5 max-w-[54ch] text-base leading-relaxed"
+                style={{ color: "var(--color-midnight-muted)" }}
+              >
+                I&apos;m actively looking for my first junior role — internship
+                or full-time — where I can write real code, receive real
+                feedback, and keep improving. If you&apos;re hiring, or want to
+                talk about a project, I&apos;d genuinely like to hear from you.
+              </p>
+
+              <p
+                className="mt-3 max-w-[54ch] text-sm leading-relaxed"
+                style={{ color: "var(--color-midnight-muted)" }}
+              >
+                GitHub is the best place to see how I work. Browse the repos,
+                open an issue, or just follow along.
+              </p>
+
+              {/* CTAs */}
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+
+                {/* Primary — GitHub (always visible) */}
+                <a
+                  href="https://github.com/muzahiddipu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-lg px-6 text-sm font-semibold transition-colors duration-200"
+                  style={{
+                    backgroundColor: "var(--color-midnight-lime)",
+                    color: "var(--color-midnight-bg)",
+                    ["--tw-ring-color" as string]: "var(--color-midnight-lime)",
+                    ["--tw-ring-offset-color" as string]: "var(--color-midnight-bg)",
+                  }}
+                  aria-label="GitHub profile (muzahiddipu) — opens in new tab"
+                >
+                  <GitHubIcon className="h-4 w-4 shrink-0" />
+                  <span>View GitHub Profile</span>
+                </a>
+
+                {/* Email — only when CONTACT_EMAIL is set */}
+                {CONTACT_EMAIL.trim() !== "" && (
+                  <EmailButton email={CONTACT_EMAIL} />
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

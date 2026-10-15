@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { FadeIn } from "./fade-in";
 
 /* ─────────────────────────────────────────────────────────────
    Types
@@ -114,14 +115,16 @@ export function ProjectsSection() {
         </div>
 
         {/* ── Cards grid ── */}
-        <ul
-          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-          role="list"
-        >
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </ul>
+        <FadeIn className="mt-12" delay={0.08}>
+          <ul
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            role="list"
+          >
+            {PROJECTS.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </ul>
+        </FadeIn>
       </div>
     </section>
   );
@@ -199,7 +202,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="project-demo-link inline-flex items-center gap-1.5 rounded-lg border px-4 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+            className="project-demo-link inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border px-4 py-2 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             style={{
               borderColor: "var(--color-midnight-border)",
               backgroundColor: "var(--color-midnight-bg)",

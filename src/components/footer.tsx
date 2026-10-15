@@ -31,7 +31,7 @@ export function Footer() {
           <div>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 font-bold tracking-tight focus-visible:outline-none focus-visible:underline"
+              className="inline-flex min-h-[44px] items-center gap-2 font-bold tracking-tight focus-visible:outline-none focus-visible:underline"
               style={{ color: "var(--color-midnight-text)" }}
               aria-label="Dipu — back to top"
             >
@@ -68,7 +68,7 @@ export function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-xs font-medium transition-colors duration-150 hover:text-[color:var(--color-midnight-text)] focus-visible:outline-none focus-visible:underline"
+                      className="inline-flex min-h-[44px] items-center text-xs font-medium transition-colors duration-150 hover:text-[color:var(--color-midnight-text)] focus-visible:outline-none focus-visible:underline"
                       style={{ color: "var(--color-midnight-muted)" }}
                     >
                       {link.label}
@@ -80,7 +80,7 @@ export function Footer() {
                     href="https://github.com/muzahiddipu"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:underline"
+                    className="inline-flex min-h-[44px] items-center text-xs font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:underline"
                     style={{ color: "var(--color-midnight-lime)" }}
                     aria-label="GitHub profile (muzahiddipu) — opens in new tab"
                   >

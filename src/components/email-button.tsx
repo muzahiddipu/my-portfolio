@@ -23,7 +23,7 @@ export function EmailButton({ email }: { email: string }) {
       {/* mailto link */}
       <a
         href={`mailto:${email}`}
-        className="inline-flex h-11 items-center gap-2 rounded-l-lg border-y border-l px-5 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-l-lg border-y border-l px-5 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         style={{
           borderColor: "var(--color-midnight-border)",
           backgroundColor: "var(--color-midnight-surface)",

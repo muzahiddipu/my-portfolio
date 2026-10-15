@@ -77,7 +77,7 @@ export function Navbar() {
         {/* ── Brand ── */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 font-bold tracking-tight"
+          className="group flex min-h-[44px] items-center gap-2.5 font-bold tracking-tight"
           style={{ color: "var(--color-midnight-text)" }}
           aria-label="Dipu — home"
         >
@@ -106,7 +106,7 @@ export function Navbar() {
                 key={link.label}
                 href={link.href}
                 aria-current={active ? "page" : undefined}
-                className="relative text-sm font-medium transition-colors focus-visible:outline-none focus-visible:underline"
+                className="relative inline-flex min-h-[44px] items-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:underline"
                 style={{
                   color: active
                     ? "var(--color-midnight-lime)"
@@ -213,7 +213,7 @@ export function Navbar() {
                   href={link.href}
                   aria-current={active ? "page" : undefined}
                   onClick={closeMobile}
-                  className="rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2"
+                  className="inline-flex min-h-[44px] items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2"
                   style={{
                     color: active ? "var(--color-midnight-lime)" : "var(--color-midnight-muted)",
                     backgroundColor: active
@@ -236,7 +236,7 @@ export function Navbar() {
                 href="https://github.com/muzahiddipu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:underline"
+                className="flex min-h-[44px] items-center gap-2 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:underline"
                 style={{ color: "var(--color-midnight-muted)" }}
                 aria-label="GitHub profile (muzahiddipu)"
               >

@@ -1,4 +1,5 @@
 import { ArrowDown } from "lucide-react";
+import { FadeIn } from "./fade-in";
 import { HeroCtas } from "./hero-ctas";
 
 /* ─────────────────────────────────────────────
@@ -27,67 +28,71 @@ export function HeroSection() {
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-10">
 
           {/* ── LEFT: copy ── */}
-          <div className="flex flex-col items-start">
+          <FadeIn className="flex flex-col items-start" delay={0.08}>
+            <div className="flex flex-col items-start">
 
-            {/* Label chip */}
-            <span
-              className="mb-6 inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
-              style={{
-                borderColor: "var(--color-midnight-border)",
-                backgroundColor: "var(--color-midnight-surface)",
-                color: "var(--color-midnight-lime)",
-              }}
-            >
-              Aspiring Web Developer
-            </span>
+              {/* Label chip */}
+              <span
+                className="mb-6 inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
+                style={{
+                  borderColor: "var(--color-midnight-border)",
+                  backgroundColor: "var(--color-midnight-surface)",
+                  color: "var(--color-midnight-lime)",
+                }}
+              >
+                Aspiring Web Developer
+              </span>
 
-            {/* Heading — balanced line-breaks via max-width, not forced breaks */}
-            <h1
-              id="hero-heading"
-              className="max-w-[18ch] text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-[3.25rem]"
-              style={{ color: "var(--color-midnight-text)" }}
-            >
-              Building thoughtful{" "}
-              <span style={{ color: "var(--color-midnight-lime)" }}>
-                experiences
-              </span>{" "}
-              for the web.
-            </h1>
-
-            {/* Supporting text */}
-            <p
-              className="mt-6 max-w-[52ch] text-base leading-relaxed sm:text-lg"
-              style={{ color: "var(--color-midnight-muted)" }}
-            >
-              I&apos;m Dipu — a BSc Mathematics student who builds with{" "}
-              <strong
-                className="font-medium"
+              {/* Heading — balanced line-breaks via max-width, not forced breaks */}
+              <h1
+                id="hero-heading"
+                className="max-w-[18ch] text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-[3.25rem]"
                 style={{ color: "var(--color-midnight-text)" }}
               >
-                React&nbsp;&amp;&nbsp;Next.js
-              </strong>
-              . I care about clean component architecture, accessible
-              interfaces, and shipping work that actually runs in the browser.
-            </p>
+                Building thoughtful{" "}
+                <span style={{ color: "var(--color-midnight-lime)" }}>
+                  experiences
+                </span>{" "}
+                for the web.
+              </h1>
 
-            {/* CTAs — client component for hover states */}
-            <HeroCtas />
+              {/* Supporting text */}
+              <p
+                className="mt-6 max-w-[52ch] text-base leading-relaxed sm:text-lg"
+                style={{ color: "var(--color-midnight-muted)" }}
+              >
+                I&apos;m Dipu — a BSc Mathematics student who builds with{" "}
+                <strong
+                  className="font-medium"
+                  style={{ color: "var(--color-midnight-text)" }}
+                >
+                  React&nbsp;&amp;&nbsp;Next.js
+                </strong>
+                . I care about clean component architecture, accessible
+                interfaces, and shipping work that actually runs in the browser.
+              </p>
 
-            {/* Scroll hint */}
-            <p
-              className="mt-12 hidden items-center gap-2 text-xs sm:flex"
-              style={{ color: "var(--color-midnight-muted)" }}
-              aria-hidden="true"
-            >
-              <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
-              Scroll to explore
-            </p>
-          </div>
+              {/* CTAs — client component for hover states */}
+              <HeroCtas />
+
+              {/* Scroll hint */}
+              <p
+                className="mt-12 hidden items-center gap-2 text-xs sm:flex"
+                style={{ color: "var(--color-midnight-muted)" }}
+                aria-hidden="true"
+              >
+                <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
+                Scroll to explore
+              </p>
+            </div>
+          </FadeIn>
 
           {/* ── RIGHT: code card visual ── */}
-          <div className="flex justify-center lg:justify-end" aria-hidden="true">
-            <CodeCard />
-          </div>
+          <FadeIn className="flex justify-center lg:justify-end" from="right" delay={0.12}>
+            <div aria-hidden="true">
+              <CodeCard />
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>

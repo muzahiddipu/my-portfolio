@@ -16,7 +16,7 @@ export function HeroCtas() {
       <a
         id="hero-cta-projects"
         href="#projects"
-        className="hero-btn-primary inline-flex h-11 items-center gap-2 rounded-lg px-6 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+        className="hero-btn-primary inline-flex min-h-[44px] items-center gap-2 rounded-lg px-6 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         style={{
           backgroundColor: "var(--color-midnight-lime)",
           color: "var(--color-midnight-bg)",
@@ -40,7 +40,7 @@ export function HeroCtas() {
       <a
         id="hero-cta-contact"
         href="#contact"
-        className="inline-flex h-11 items-center gap-2 rounded-lg border px-5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border px-5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2"
         style={{
           borderColor: "var(--color-midnight-border)",
           backgroundColor: "var(--color-midnight-surface)",
@@ -68,7 +68,7 @@ export function HeroCtas() {
         href="https://github.com/muzahiddipu"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-11 items-center gap-2 rounded-lg px-4 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-lg px-4 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2"
         style={{
           color: "var(--color-midnight-muted)",
           ["--tw-ring-color" as string]: "var(--color-midnight-lime)",

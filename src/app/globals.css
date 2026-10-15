@@ -108,6 +108,24 @@
   html {
     @apply font-sans scroll-smooth;
   }
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-midnight-lime);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-midnight-lime) 18%, transparent);
+  }
   /* Selection uses palette tokens via CSS vars */
   ::selection {
     background-color: var(--color-midnight-lime);
