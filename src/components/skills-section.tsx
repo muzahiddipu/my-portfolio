@@ -1,113 +1,181 @@
-import { Layers, Palette, Terminal, Wrench } from "lucide-react";
+import { Code2, Wrench, Compass } from "lucide-react";
 
-interface SkillCategory {
-  title: string;
+/* ─────────────────────────────────────────────
+   Skill data — exactly what the spec lists,
+   grouped into three categories.
+   No percentages, no progress bars, no levels.
+───────────────────────────────────────────── */
+interface SkillGroup {
+  id: string;
+  label: string;
   description: string;
-  icon: typeof Layers;
-  skills: { name: string; level: string }[];
+  icon: React.ComponentType<{ className?: string }>;
+  skills: string[];
 }
 
-const skillCategories: SkillCategory[] = [
+const SKILL_GROUPS: SkillGroup[] = [
   {
-    title: "Core Frontend & Frameworks",
-    description: "Technologies used daily in active project development",
-    icon: Layers,
+    id: "frontend",
+    label: "Frontend",
+    description: "Technologies I use to build what you see in the browser.",
+    icon: Code2,
     skills: [
-      { name: "React", level: "Component Architecture" },
-      { name: "Next.js", level: "App Router & SSR/SSG" },
-      { name: "JavaScript", level: "ES6+, Async, DOM" },
-      { name: "TypeScript", level: "Typed Props & State" },
-      { name: "HTML5 & Semantic Web", level: "Accessible Structure" },
-      { name: "CSS3 & Modern Layouts", level: "Flexbox, Grid, Responsive" },
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
     ],
   },
   {
-    title: "UI Design & Component Libraries",
-    description: "Design systems, styling, and accessible component primitives",
-    icon: Palette,
-    skills: [
-      { name: "Tailwind CSS", level: "Utility-First Styling" },
-      { name: "shadcn/ui", level: "Custom Theme & Tokens" },
-      { name: "Base UI", level: "Accessible Primitives" },
-      { name: "Responsive Design", level: "Mobile-First UX" },
-      { name: "Lucide React", level: "Consistent Iconography" },
-    ],
-  },
-  {
-    title: "Development Tools & Deployment",
-    description: "Workflow tools and platform integrations",
+    id: "tools",
+    label: "Tools & Workflow",
+    description: "Day-to-day tools for version control and development.",
     icon: Wrench,
-    skills: [
-      { name: "Git", level: "Version Control" },
-      { name: "GitHub", level: "Repositories & Collaboration" },
-      { name: "Vercel", level: "Continuous Deployment" },
-      { name: "npm", level: "Package Management" },
-      { name: "VS Code", level: "Development Environment" },
-    ],
+    skills: ["Git", "GitHub", "npm", "Browser DevTools"],
+  },
+  {
+    id: "exploring",
+    label: "Currently Exploring",
+    description: "Areas I am actively learning and building toward.",
+    icon: Compass,
+    skills: ["Full-stack development", "Backend", "AI-assisted development"],
   },
 ];
 
+/* ─────────────────────────────────────────────
+   SkillsSection — server component (no state)
+───────────────────────────────────────────── */
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-20 sm:py-28 border-t border-[#223561]/80">
+    <section
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="border-t py-20 sm:py-28"
+      style={{ borderColor: "var(--color-midnight-border)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+
+        {/* ── Header ── */}
         <div className="flex flex-col items-start">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#223561] bg-[#172443] px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#C8F169]">
-            <Terminal className="h-3 w-3" />
-            <span>Technical Capabilities</span>
-          </div>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[#F3F5FA] sm:text-4xl">
-            Skills &amp; Technologies
+          <span
+            className="inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
+            style={{
+              borderColor: "var(--color-midnight-border)",
+              backgroundColor: "var(--color-midnight-surface)",
+              color: "var(--color-midnight-lime)",
+            }}
+          >
+            Skills
+          </span>
+
+          <h2
+            id="skills-heading"
+            className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+            style={{ color: "var(--color-midnight-text)" }}
+          >
+            What I work with
           </h2>
-          <p className="mt-3 max-w-2xl text-base text-[#A7B3CC]">
-            Verified technologies applied across live projects, organized by functional area without inflated claims.
+
+          <p
+            className="mt-3 max-w-[56ch] text-base"
+            style={{ color: "var(--color-midnight-muted)" }}
+          >
+            No ratings or percentages — just an honest list of what I use,
+            grouped by category.
           </p>
         </div>
 
-        {/* Categories Grid */}
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <div
-                key={category.title}
-                className="flex flex-col rounded-2xl border border-[#223561] bg-[#172443] p-6 shadow-xl transition-all duration-300 hover:border-[#C8F169]/40"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#101A35] border border-[#223561] text-[#C8F169]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-[#F3F5FA]">
-                      {category.title}
-                    </h3>
-                  </div>
-                </div>
-                <p className="mt-2 text-xs text-[#A7B3CC]">
-                  {category.description}
-                </p>
-
-                <div className="mt-6 flex flex-col gap-2.5">
-                  {category.skills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="flex items-center justify-between rounded-lg border border-[#223561]/70 bg-[#101A35]/80 px-3 py-2 text-xs"
-                    >
-                      <span className="font-medium text-[#F3F5FA]">
-                        {skill.name}
-                      </span>
-                      <span className="font-mono text-[11px] text-[#A7B3CC]">
-                        {skill.level}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+        {/* ── Groups ── */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {SKILL_GROUPS.map((group) => (
+            <SkillGroupCard key={group.id} group={group} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   SkillGroupCard
+───────────────────────────────────────────── */
+function SkillGroupCard({ group }: { group: SkillGroup }) {
+  const Icon = group.icon;
+  const isExploring = group.id === "exploring";
+
+  return (
+    <div
+      className="flex flex-col rounded-2xl border p-6 transition-colors duration-200"
+      style={{
+        borderColor: "var(--color-midnight-border)",
+        backgroundColor: "var(--color-midnight-surface)",
+      }}
+    >
+      {/* Group header */}
+      <div className="flex items-center gap-3">
+        <span
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border"
+          style={{
+            borderColor: "var(--color-midnight-border)",
+            backgroundColor: "var(--color-midnight-bg)",
+            color: "var(--color-midnight-lime)",
+          }}
+        >
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <h3
+          className="text-sm font-bold"
+          style={{ color: "var(--color-midnight-text)" }}
+        >
+          {group.label}
+        </h3>
+      </div>
+
+      <p
+        className="mt-2 text-xs leading-relaxed"
+        style={{ color: "var(--color-midnight-muted)" }}
+      >
+        {group.description}
+      </p>
+
+      {/* Skill chips */}
+      <ul
+        className="mt-5 flex flex-wrap gap-2"
+        aria-label={`${group.label} skills`}
+      >
+        {group.skills.map((skill) => (
+          <li key={skill}>
+            <span
+              className="inline-block rounded-md border px-2.5 py-1 text-xs font-medium"
+              style={
+                isExploring
+                  ? {
+                      borderColor:
+                        "color-mix(in srgb, var(--color-midnight-lime) 30%, transparent)",
+                      backgroundColor:
+                        "color-mix(in srgb, var(--color-midnight-lime) 6%, transparent)",
+                      color: "var(--color-midnight-lime)",
+                    }
+                  : {
+                      borderColor: "var(--color-midnight-border)",
+                      backgroundColor: "var(--color-midnight-bg)",
+                      color: "var(--color-midnight-text)",
+                    }
+              }
+            >
+              {isExploring && (
+                <span aria-hidden="true" className="mr-1 opacity-70">
+                  ↗
+                </span>
+              )}
+              {skill}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

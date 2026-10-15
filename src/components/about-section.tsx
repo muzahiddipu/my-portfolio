@@ -1,85 +1,123 @@
-import { BookOpen, GraduationCap, Lightbulb, Target } from "lucide-react";
-
+/* ─────────────────────────────────────────────
+   AboutSection — server component (no state)
+───────────────────────────────────────────── */
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 sm:py-28 border-t border-[#223561]/80">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="border-t py-20 sm:py-28"
+      style={{ borderColor: "var(--color-midnight-border)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Left Column: Heading & Intro */}
-          <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#223561] bg-[#172443] px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#C8F169]">
-              <Target className="h-3 w-3" />
-              <span>Background & Philosophy</span>
-            </div>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-[#F3F5FA] sm:text-4xl">
-              About Me
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+
+          {/* ── Left: heading + intro ── */}
+          <div>
+            <span
+              className="inline-block rounded-full border px-3.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.15em]"
+              style={{
+                borderColor: "var(--color-midnight-border)",
+                backgroundColor: "var(--color-midnight-surface)",
+                color: "var(--color-midnight-lime)",
+              }}
+            >
+              About
+            </span>
+
+            <h2
+              id="about-heading"
+              className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+              style={{ color: "var(--color-midnight-text)" }}
+            >
+              A bit about me
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[#A7B3CC]">
-              I am an aspiring developer who believes in learning by building. Rather than just following tutorials, I focus on constructing real-world web applications that tackle real UI and data challenges.
+
+            <p
+              className="mt-5 text-base leading-relaxed"
+              style={{ color: "var(--color-midnight-muted)" }}
+            >
+              I&apos;m Dipu — a{" "}
+              <strong
+                className="font-medium"
+                style={{ color: "var(--color-midnight-text)" }}
+              >
+                BSc Mathematics
+              </strong>{" "}
+              student who got pulled into web development by the immediacy of
+              it: you write something, and it works in a browser, right now.
+              That feedback loop keeps me hooked.
             </p>
 
-            <div className="mt-8 rounded-2xl border border-[#223561] bg-[#172443] p-5 shadow-lg">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#101A35] border border-[#223561] text-[#C8F169]">
-                  <GraduationCap className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-[#F3F5FA]">Academic Background</h3>
-                  <p className="text-xs text-[#A7B3CC]">Mathematics Education</p>
-                </div>
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-[#A7B3CC]">
-                My background in <strong className="text-[#F3F5FA] font-medium">Mathematics</strong> provides me with strong analytical reasoning, structured problem-solving discipline, and an affinity for clean algorithmic thinking in software development.
-              </p>
-            </div>
+            <p
+              className="mt-4 text-base leading-relaxed"
+              style={{ color: "var(--color-midnight-muted)" }}
+            >
+              I learn by building real things — not toy examples. The three
+              projects on this page are deployed applications I built to solve
+              actual problems: a news portal, a book tracker, and a workout
+              planner. Each one taught me something I couldn&apos;t have
+              learned from a tutorial alone.
+            </p>
+
+            <p
+              className="mt-4 text-base leading-relaxed"
+              style={{ color: "var(--color-midnight-muted)" }}
+            >
+              The analytical habits from studying maths carry over: break the
+              problem down, understand it precisely, then build the simplest
+              thing that solves it. I&apos;m looking for a junior role where I
+              can keep doing that alongside people who care about the craft.
+            </p>
           </div>
 
-          {/* Right Column: Values & Highlights */}
-          <div className="space-y-6 lg:col-span-7">
-            <div className="rounded-2xl border border-[#223561] bg-[#172443] p-6 shadow-md transition-all hover:border-[#C8F169]/40">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#101A35] border border-[#223561] text-[#C8F169]">
-                  <BookOpen className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-[#F3F5FA]">Hands-on Execution</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#A7B3CC]">
-                    Every project I work on—from bilingual news portals to gym planners—is an exercise in writing clean React components, managing state predictably, and designing intuitive user interactions.
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* ── Right: two plain fact cards ── */}
+          <div className="flex flex-col gap-5 lg:justify-center">
 
-            <div className="rounded-2xl border border-[#223561] bg-[#172443] p-6 shadow-md transition-all hover:border-[#C8F169]/40">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#101A35] border border-[#223561] text-[#C8F169]">
-                  <Lightbulb className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-[#F3F5FA]">Modern Frontend Standards</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#A7B3CC]">
-                    I prioritize responsive layouts, accessibility best practices, keyboard navigation, and semantic HTML to ensure web experiences perform smoothly across all devices.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <FactCard
+              label="How I work"
+              text="I start with the user-facing behaviour, build toward it, and stop when it works. No gold-plating, no invented features."
+            />
 
-            <div className="rounded-2xl border border-[#223561] bg-[#172443] p-6 shadow-md transition-all hover:border-[#C8F169]/40">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#101A35] border border-[#223561] text-[#C8F169]">
-                  <Target className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-[#F3F5FA]">Career Objective</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#A7B3CC]">
-                    Actively seeking Junior Web Developer / Full-Stack Developer opportunities where I can contribute to high-impact products, learn from experienced engineering teams, and grow continuously.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <FactCard
+              label="What I focus on"
+              text="React and Next.js for the front-end, accessible HTML and clear component boundaries throughout, TypeScript to catch mistakes before they ship."
+            />
+
+            <FactCard
+              label="What I'm after"
+              text="A junior position — remote or on-site — where the team ships real software, gives honest feedback, and doesn't mind questions."
+            />
+
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ── Small bordered fact card — no icon, no fluff ── */
+function FactCard({ label, text }: { label: string; text: string }) {
+  return (
+    <div
+      className="rounded-xl border p-5 transition-colors duration-200"
+      style={{
+        borderColor: "var(--color-midnight-border)",
+        backgroundColor: "var(--color-midnight-surface)",
+      }}
+    >
+      <p
+        className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.13em]"
+        style={{ color: "var(--color-midnight-lime)" }}
+      >
+        {label}
+      </p>
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: "var(--color-midnight-muted)" }}
+      >
+        {text}
+      </p>
+    </div>
   );
 }

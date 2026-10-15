@@ -141,7 +141,7 @@ export function Navbar() {
             href="https://github.com/muzahiddipu"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2"
+            className="flex h-11 w-11 items-center justify-center rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             style={{
               borderColor: "var(--color-midnight-border)",
               backgroundColor: "var(--color-midnight-surface)",
@@ -170,7 +170,7 @@ export function Navbar() {
             type="button"
             id="mobile-menu-toggle"
             onClick={() => setMobileOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2"
+            className="flex h-11 w-11 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             style={{
               borderColor: "var(--color-midnight-border)",
               backgroundColor: "var(--color-midnight-surface)",
@@ -195,7 +195,7 @@ export function Navbar() {
         <div
           id="mobile-menu"
           role="dialog"
-          aria-modal="false"
+          aria-modal="true"
           aria-label="Navigation menu"
           className="border-b px-4 pb-6 pt-2 md:hidden"
           style={{
